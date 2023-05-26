@@ -53,6 +53,7 @@ function draw() {
   placar();
   marcaponto();
   controlederaquetepraborda();
+  colisaodaminharaqueteoponente();
 }
 
 function mostrarbolinha() {
@@ -121,6 +122,16 @@ function colisaodaminharaquete() {
     raquetada.play();
   }
 }
+
+function colisaodaminharaqueteoponente() {
+  colidiu =  
+  collideRectCircle(oponenteraqueteX, oponenteraqueteY, retanguloC, retanguloH, bolinhaX, bolinhaY, raio);
+  if (colidiu) {
+    movimentoX *= -1;
+    raquetada.play();
+  }
+}
+
 
 function placar() {
   textAlign(CENTER, CENTER)
