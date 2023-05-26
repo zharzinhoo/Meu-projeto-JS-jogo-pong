@@ -34,7 +34,7 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(600, 400);
+  createCanvas(1920, 1080);
   relaxa.loop();
 }
 
