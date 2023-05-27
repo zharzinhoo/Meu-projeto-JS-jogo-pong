@@ -56,6 +56,7 @@ function draw() {
 }
 
 function mostrarbolinha() {
+  fill("#5E05FC");
   circle(bolinhaX, bolinhaY, tamanhodabola);
 }
 
@@ -85,10 +86,12 @@ function controlederaquetepraborda() {
 }
 
 function raquete() {
+  fill("#5E05FC")
   rect(retanguloX, retanguloY, retanguloC, retanguloH);
 }
 
 function raqueteoponente() {
+  fill("#5E05FC")
   rect(oponenteraqueteX, oponenteraqueteY, retanguloC, retanguloH);
 }
 
