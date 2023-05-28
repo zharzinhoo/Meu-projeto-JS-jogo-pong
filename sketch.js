@@ -6,6 +6,7 @@ let tamanhodabola = 25;
 let movimentoX = 5;
 let movimentoY = 5;
 let raio = tamanhodabola / 2;
+let raio2 = raquete / 2;
 let retanguloX = 5;
 let retanguloY = 150;
 let retanguloC = 10; //comprimento
@@ -27,15 +28,8 @@ let raquetada;
 let relaxa;
 let ponto;
 
-function preload() {
-  relaxa = loadSound("relaxa.mp3");
-  raquetada = loadSound("raquetada.mp3");
-  ponto = loadSound("ponto.mp3")
-}
-
 function setup() {
   createCanvas(600, 400);
-  relaxa.loop();
 }
 
 function draw() {
@@ -45,7 +39,7 @@ function draw() {
   controledetoquedeborda();
   raquete();
   movimentaraqueta();
-  colizaocomaraquete(); //no caso essa "raquete" seria o retangulo!!!
+  colizaocomaraquete();
   raqueteoponente();
   movimentodooponente(); 
   colisaodaminharaquete();
@@ -82,32 +76,31 @@ function controlederaquetepraborda() {
    retanguloY = 2; }
   
   if (retanguloY >= 400) { 
-   retanguloY = 399; }
+   retanguloY = 300; }
 }
 
 function raquete() {
-  fill("#5E05FC")
+  fill("#5E05FC");
   rect(retanguloX, retanguloY, retanguloC, retanguloH);
 }
 
 function raqueteoponente() {
-  fill("#5E05FC")
+  fill("#5E05FC");
   rect(oponenteraqueteX, oponenteraqueteY, retanguloC, retanguloH);
 }
 
 function movimentaraqueta() {
   if (keyIsDown(UP_ARROW)) {
-    retanguloY -= 10;
+    retanguloY -= 15;
   }    
    if (keyIsDown(DOWN_ARROW)) {
-    retanguloY += 10;
+    retanguloY += 15;
   }    
 }
 
 function colizaocomaraquete() {
   if (bolinhaX - raio < retanguloX + retanguloC && bolinhaY - raio <  retanguloY + retanguloH && bolinhaY + raio > retanguloY ) {
     movimentoX *= -1;
-    raquetada.play();
   }
 }
 
@@ -121,7 +114,14 @@ function colisaodaminharaquete() {
   collideRectCircle(retanguloX, retanguloY, retanguloC, retanguloH, bolinhaX, bolinhaY, raio);
   if (colidiu) {
     movimentoX *= -1;
-    raquetada.play();
+  }
+}
+
+function colisaodaminharaquete() {
+  colidiu =  
+  collideRectCircle(oponenteraqueteX, oponenteraqueteY, retanguloC, retanguloH, bolinhaX, bolinhaY, raio);
+  if (colidiu) {
+    movimentoX *= -1;
   }
 }
 
@@ -135,13 +135,11 @@ function placar() {
 }
 
 function marcaponto() {
-  if (bolinhaX > 589) {
+  if (bolinhaX < 15) {
     meuspontos += 1;
-    ponto.play();
   }
-    if (bolinhaX < 15) {
+    if (bolinhaX > 589) {
     pontosrivais += 1;
-    ponto.play();
   }
 }
 
