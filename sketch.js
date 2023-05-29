@@ -117,6 +117,14 @@ function colisaodaminharaquete() {
   }
 }
 
+function colisaodaminharaquete() {
+  colidiu =  
+  collideRectCircle(oponenteraqueteX, oponenteraqueteY, retanguloC, retanguloH, bolinhaX, bolinhaY, raio);
+  if (colidiu) {
+    movimentoX *= -1;
+  }
+}
+
 function placar() {
   textAlign(CENTER, CENTER)
   fill(255);
