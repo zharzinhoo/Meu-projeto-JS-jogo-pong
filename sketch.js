@@ -135,7 +135,7 @@ function placar() {
 }
 
 function marcaponto() {
-  if (bolinhaX < 15){
+  if (bolinhaX < 20){
     meuspontos += 1;
   }
     if (bolinhaX < 589) {
